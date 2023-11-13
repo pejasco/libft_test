@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calloc.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:15:04 by chuleung          #+#    #+#             */
-/*   Updated: 2023/11/04 17:41:05 by chuleung         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:19:33 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr;
+	char	*ary;
+	size_t	i;
+	size_t	bsize;
 
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (ptr);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	if (nmemb == 0 || size == 0)
+		return (malloc(1));
+	bsize = nmemb * size;
+	if (bsize < nmemb || bsize < size)
+		return (NULL);
+	ary = (char *)malloc(bsize);
+	if (ary == NULL)
+		return (NULL);
+	while (i < bsize)
+		ary[i++] = 0;
+	return((void *)ary);
 }

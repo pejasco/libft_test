@@ -6,7 +6,7 @@
 /*   By: chuleung <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:57:34 by chuleung          #+#    #+#             */
-/*   Updated: 2023/11/11 19:46:21 by chuleung         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:14:00 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,29 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
+	int	i;
 	int	result;
 	int	sign;
 
+	i = 0;
 	result = 0;
 	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	while (*str == '-')
-		sign *= -1;
-	while (*str >= '0' && *str <= '9')
+	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		result = result * 10 + *str - '0';
-		str++;
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
 	}
-	return (sign * result);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = result * 10 + nptr[i] - '0';
+		i++;
+	}
+	return (result * sign);
 }
 
 /*int	main(void)

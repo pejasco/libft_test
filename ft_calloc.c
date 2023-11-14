@@ -26,6 +26,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ary = (char *)malloc(bsize);
 	if (ary == NULL)
 		return (NULL);
+	i = 0;
 	while (i < bsize)
 		ary[i++] = 0;
 	return((void *)ary);

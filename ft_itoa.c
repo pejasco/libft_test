@@ -16,48 +16,48 @@
 //#include <unistd.h>
 //#include <stdlib.h>
 
-int	ft_lencheck(long nbr)
+static size_t	*re_itoa(long num, char *ary)
 {
-	int	len;
-
-	len = 0;
-	if (nbr < 0)
+	static size_t	j = 0;
+	
+	if (ary[j] == '-')
+		j++;
+	if (num / 10 == 0)
+		ary[j++] = num + '0';
+	else
 	{
-		nbr = -nbr;
-		len = 1;
-	}	
-	while (nbr > 0)
-	{	
-		nbr /= 10;
-		len++;
-	}		
-	return (len);
+		re_itoa(num / 10, ary);
+		ary[j++] = num % 10 + '0';
+	}
+	return (&j);
 }
 
 char	*ft_itoa(int n)
 {
-	long	nblong;
-	char	*str;
 	int		i;
-	size_t	len;
+	char 	ary[40];
+	char 	*out;
+	long 	num;
+	size_t	*j;
 
-	nblong = n;
-	len = ft_lencheck(nblong);
-	str = (char *)malloc(len + 1);
-	i = len - 1;
-	if (nblong < 0)
+	i = 0;
+	while (i < 40)
+		ary[i++] = '\0';
+	num = n;
+	if (num < 0)
 	{
-		str[0] = '-';
-		nblong = -nblong;
+		num = -num;
+		ary[0] = '-';
 	}
-	while (nblong > 0)
-	{
-		str[i--] = (nblong % 10) + '0';
-		nblong /= 10;
-	}
-	str[len] = '\0';
-	return (str);
+	j = re_itoa(num, ary);
+	*j = 0;
+	out = (char *)malloc((ft_strlen(ary) +1) * sizeof(char));
+	ft_strlcpy(out, ary, (ft_strlen(ary) + 1));
+	return (out);
 }
+
+
+
 
 /*int	main(void)
 {

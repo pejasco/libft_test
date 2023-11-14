@@ -14,25 +14,29 @@
 //#include <unistd.h>
 //#include <limits.h>
 
-void	ft_putchar(int fd, char c)
+static int	my_abs(int n)
 {
-	write(fd, &c, 1);
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
 }
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	ln;
-
-	ln = n;
-	if (ln < 0)
+	if (n < 0)
+		ft_putchar_fd('-', fd);
+	if (n / 10 == 0)
 	{
-		ln = -ln;
-		write(1, "-", 1);
+		ft_putchar_fd((my_abs(n) + '0'), fd);
 	}
-	if (ln > 9)
-		ft_putnbr_fd(ln / 10, fd);
-	ft_putchar(fd, ((ln % 10) + 48));
+	else
+	{
+		ft_putnbr_fd(my_abs(n / 10), fd);
+		ft_putnbr_fd(my_abs(n % 10), fd);
+	}
 }
+
 
 /*int	main(void)
 {

@@ -32,7 +32,4 @@ re: fclean all
 
 bonus: $(NAME)
 
-print: $(wildcard *.c)
-	ls -la $(wildcard *.c)
-
 .PHONY: all clean fclean

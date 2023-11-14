@@ -6,7 +6,7 @@
 /*   By: chuleung <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 16:02:45 by chuleung          #+#    #+#             */
-/*   Updated: 2023/11/11 20:06:08 by chuleung         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:25:25 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(my_abs(n % 10), fd);
 	}
 }
-
 
 /*int	main(void)
 {

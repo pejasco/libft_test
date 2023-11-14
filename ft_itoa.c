@@ -6,7 +6,7 @@
 /*   By: chuleung <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:57:19 by chuleung          #+#    #+#             */
-/*   Updated: 2023/11/11 19:27:21 by chuleung         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:26:59 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static size_t	*re_itoa(long num, char *ary)
 {
 	static size_t	j = 0;
-	
+
 	if (ary[j] == '-')
 		j++;
 	if (num / 10 == 0)
@@ -35,9 +35,9 @@ static size_t	*re_itoa(long num, char *ary)
 char	*ft_itoa(int n)
 {
 	int		i;
-	char 	ary[40];
-	char 	*out;
-	long 	num;
+	char	ary[40];
+	char	*out;
+	long	num;
 	size_t	*j;
 
 	i = 0;
@@ -55,10 +55,6 @@ char	*ft_itoa(int n)
 	ft_strlcpy(out, ary, (ft_strlen(ary) + 1));
 	return (out);
 }
-
-
-
-
 /*int	main(void)
 {
 	long	nbr;
